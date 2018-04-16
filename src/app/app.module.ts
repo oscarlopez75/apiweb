@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
 import { GetTokenService } from './get-token.service';
+import { ApilistComponent } from './apilist/apilist.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { GetTokenService } from './get-token.service';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ApilistComponent
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     this.getToken.sendCredentials(this.username, this.password)
     .subscribe(
-                data => {                  
+                data => {
                   console.log("Data: ");
                   this.userHasToken(data, true);
                 },
@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
 
     if(foundIt){
       console.log(userData);
+      localStorage.setItem('username', userData.username);
+      localStorage.setItem('token', userData.jwt);
     }else{
       console.log(userData.error);
     }
