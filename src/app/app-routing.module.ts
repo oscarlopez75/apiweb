@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { ApilistComponent } from './apilist/apilist.component'
+import { ApilistComponent } from './apilist/apilist.component';
+import { LogsComponent } from './logs/logs.component';
+
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
   {
@@ -15,7 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'apilist',
-    component: ApilistComponent
+    component: ApilistComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'logsapi',
+    component: LogsComponent,
+    canActivate: [AuthGuard]
   }
 
 ];

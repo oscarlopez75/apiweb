@@ -15,9 +15,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { ApilistComponent } from './apilist/apilist.component';
 
 import { GetTokenService } from './get-token.service';
-import { ApilistComponent } from './apilist/apilist.component';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { LogsComponent } from './logs/logs.component';
+import { GetLogsService } from './get-logs.service'
 
 
 @NgModule({
@@ -27,7 +31,8 @@ import { ApilistComponent } from './apilist/apilist.component';
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    ApilistComponent
+    ApilistComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,12 @@ import { ApilistComponent } from './apilist/apilist.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [GetTokenService],
+  providers: [
+    GetTokenService,
+    AuthGuardService,
+    AuthService,
+    GetLogsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

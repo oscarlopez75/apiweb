@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from './custom_form_validator';
 import { GetTokenService } from '../get-token.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +17,14 @@ export class LoginComponent implements OnInit {
   password:string = '';
   username:string = '';
   titleAlert:string = 'This field is required bitch';
+  isLoggedIn = false;
+  user: string;
+  errorFound = false;
+  errorMessage: string;
 
 
-
-  constructor(private fb: FormBuilder, private getToken: GetTokenService) {
+  constructor(private fb: FormBuilder, private getToken: GetTokenService,
+    private authService: AuthService, private router: Router) {
     this.rForm = fb.group({
       'username': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': [null, Validators.compose([Validators.required, CustomValidators.validateCharacters])]
@@ -26,7 +32,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.user = this.authService.getUser();
+    console.log(this.isLoggedIn);
   }
 
   addPost(post){
@@ -52,11 +60,20 @@ export class LoginComponent implements OnInit {
 
     if(foundIt){
       console.log(userData);
-      localStorage.setItem('username', userData.username);
-      localStorage.setItem('token', userData.jwt);
+      sessionStorage.setItem('username', userData.username);
+      sessionStorage.setItem('token', userData.jwt);
     }else{
       console.log(userData.error);
+      this.errorFound = true;
+      this.errorMessage = userData.error;
     }
+    this.router.navigate(['apilist']);
+  }
+
+  logout(){
+    this.authService.logout();
+    
+    this.router.navigate(['']);
   }
 
 
