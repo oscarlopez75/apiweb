@@ -18,4 +18,8 @@ export class AuthService {
     sessionStorage.removeItem('username');
   }
 
+  getToken(): any{
+    return sessionStorage.getItem('token');
+  }
+
 }

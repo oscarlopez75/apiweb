@@ -1,3 +1,20 @@
 <p>
-  logs works!
+  User = {{user}}
 </p>
+
+<p>
+  Token = {{token}}
+</p>
+
+<h2>Logs ({{numRecords}}): </h2>
+
+<div *ngIf="showError" align="center">
+  <p>{{gotError}}</p>
+</div>
+
+
+<div *ngFor="let log of logs">
+  <p>***{{log.date}}***</p>
+  <p>{{log.script}}</p>
+  <p>{{log.errorMessage}}</p>
+</div>

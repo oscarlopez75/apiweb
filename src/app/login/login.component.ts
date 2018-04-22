@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('username', userData.username);
       sessionStorage.setItem('token', userData.jwt);
     }else{
-      console.log(userData.error);
+      console.log(userData);
       this.errorFound = true;
       this.errorMessage = userData.error;
     }
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 
   logout(){
     this.authService.logout();
-    
+
     this.router.navigate(['']);
   }
 
