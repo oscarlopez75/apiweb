@@ -4,11 +4,11 @@ import {Observable} from 'rxjs/Observable';
 
 
 @Injectable()
-export class GetLogsService {
+export class GetUsersService {
 
   constructor(private http:HttpClient) { }
 
-  getLogs(token){
+  getUsers(token){
     const httpOptions = {
         headers: new HttpHeaders({
           "content-type": "application/json",
@@ -21,7 +21,7 @@ export class GetLogsService {
         })
     };
 
-    return this.http.get<{}>('http://localhost:8081/getlogs',httpOptions);
+    return this.http.get<{}>('http://localhost:8081/getusers',httpOptions);
 
 
   }

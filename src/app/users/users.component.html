@@ -1,0 +1,19 @@
+<p>
+  User = {{user}}
+</p>
+
+<p>
+  Token = {{token}}
+</p>
+
+<h2>Users ({{numRecords}}): </h2>
+
+<div *ngIf="showError" align="center">
+  <p>{{gotError}}</p>
+</div>
+
+
+<div *ngFor="let user of users">
+  <p>User: {{user.username}}. Role: {{user.access}}. Status: {{user.status}}</p>
+
+</div>

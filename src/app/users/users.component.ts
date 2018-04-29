@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { GetLogsService } from '../get-logs.service'
+import { GetUsersService } from '../get-users.service'
 
 @Component({
-  selector: 'app-logs',
-  templateUrl: './logs.component.html',
-  styleUrls: ['./logs.component.css']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
-export class LogsComponent implements OnInit {
+export class UsersComponent implements OnInit {
+
   user: string;
   token: string;
   getData: string;
-  logs: Array<any>;
+  users: Array<any>;
   numRecords: number;
   gotError: string;
   showError = false;
 
-  constructor(private authService: AuthService, private getLogs: GetLogsService) { }
+  constructor(private authService: AuthService, private getUsers: GetUsersService) { }
 
   ngOnInit() {
     this.user = this.authService.getUser();
     this.token = this.authService.getToken();
 
-
-    console.log("*********************************");
-    this.getLogs.getLogs(this.token).subscribe(
+    this.getUsers.getUsers(this.token).subscribe(
       data => {
         this.showResults(data);
       },
@@ -36,16 +35,12 @@ export class LogsComponent implements OnInit {
       () => {}
     );
 
-
   }
 
-  
   showResults(data){
-    this.numRecords = data.logs.length;
-    this.logs = data.logs;
-    console.log(this.logs);
-
-
+    this.numRecords = data.users.length;
+    this.users = data.users;
+    console.log(this.users);
   }
 
 }

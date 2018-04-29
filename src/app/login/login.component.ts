@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     }else{
       console.log(userData);
       this.errorFound = true;
-      this.errorMessage = userData.error;
+      this.errorMessage = userData.error.message;
     }
     this.router.navigate(['apilist']);
   }

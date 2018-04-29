@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ApilistComponent } from './apilist/apilist.component';
 import { LogsComponent } from './logs/logs.component';
+import { UsersComponent } from './users/users.component'
 
 import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'logsapi',
     component: LogsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'usersapi',
+    component: UsersComponent,
     canActivate: [AuthGuard]
   }
 

@@ -21,7 +21,9 @@ import { GetTokenService } from './get-token.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { LogsComponent } from './logs/logs.component';
-import { GetLogsService } from './get-logs.service'
+import { GetLogsService } from './get-logs.service';
+import { GetUsersService } from './get-users.service';
+import { UsersComponent } from './users/users.component'
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { GetLogsService } from './get-logs.service'
     LoginComponent,
     HomeComponent,
     ApilistComponent,
-    LogsComponent
+    LogsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { GetLogsService } from './get-logs.service'
     GetTokenService,
     AuthGuardService,
     AuthService,
-    GetLogsService
+    GetLogsService,
+    GetUsersService
   ],
   bootstrap: [AppComponent]
 })
